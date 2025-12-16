@@ -1,15 +1,15 @@
-# FinTech Quantitative Finance Project
+# Quantitative Finance Toolkit
 
-A quantitative finance toolkit exploring financial data, derivatives pricing, and trading strategies using modern Python libraries.
+A professional quantitative finance toolkit for derivatives pricing, portfolio optimization, and trading strategy development using industry-standard Python libraries.
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
 - Python 3.11+
 - Virtual environment (`.venv311`)
 
-### Setup
+### Installation
 
 ```bash
 # Activate virtual environment
@@ -19,99 +19,83 @@ source .venv311/bin/activate
 pip install -r requirements.txt
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 quant/
-├── scripts/              # Test and example scripts
-│   ├── test_openbb.py   # OpenBB market data examples
-│   ├── test_pyql.py     # QuantLib examples
-│   └── test_gs_openbb_integration.py  # GS Quant + OpenBB integration
-├── docs/                 # Documentation
-│   ├── CLAUDE_CODE_BEDROCK_SETUP.md
+├── scripts/              # Analysis and backtesting scripts
+│   ├── test_openbb.py   # Market data retrieval
+│   ├── test_pyql.py     # QuantLib derivatives pricing
+│   ├── test_gs.py       # GS Quant framework examples
+│   ├── test_vollib.py   # Options volatility analysis
+│   └── test_gs_openbb_integration.py  # Integrated workflow
+├── docs/                 # Technical documentation
 │   └── gs_quant_explanation.md
-├── config/               # Configuration files
-│   ├── claude_code_bedrock.env
-│   └── setup_*.sh
-└── .venv311/            # Python virtual environment
+└── config/               # Configuration files
 ```
 
-## 🛠️ Tools & Libraries
+## Tools & Libraries
 
 ### Market Data
-- **OpenBB**: Free market data (yfinance, etc.)
+- **OpenBB**: Multi-source market data platform (yfinance, FRED, etc.)
 - **GS Quant**: Goldman Sachs quantitative finance toolkit
 
-### Quantitative Finance
-- **QuantLib**: Derivatives pricing and risk management
-- **GS Quant**: Trading strategies, backtesting, risk analytics
+### Quantitative Analysis
+- **QuantLib**: Industry-standard derivatives pricing and risk management
+- **GS Quant**: Portfolio optimization, backtesting, and risk analytics
+- **vollib**: Black-Scholes-Merton options analytics
 
-### Data Analysis
-- **pandas**: Data manipulation
+### Data Science
+- **pandas**: Time series and data manipulation
 - **numpy**: Numerical computing
 
-## 📚 Learning Resources
+## Key Capabilities
 
-This project follows concepts from:
-- **Principles of Corporate Finance** (Brealey, Myers, Allen)
-  - Options & Derivatives (Chapters 20-21)
-  - Portfolio Theory (Chapter 8)
-  - Risk Management (Chapters 7, 24)
-  - Capital Budgeting (Chapters 6-7)
+### Derivatives Pricing
+- European and American options (Black-Scholes, binomial trees)
+- Interest rate derivatives (swaps, caps, floors)
+- Greeks calculation (Delta, Gamma, Vega, Theta, Rho)
+- Implied volatility analysis
 
-## 🔧 Configuration
+### Portfolio Management
+- Mean-variance optimization
+- Risk metrics (VaR, CVaR, Sharpe ratio)
+- Portfolio rebalancing strategies
+- Factor exposure analysis
 
-### Claude Code + Amazon Bedrock
+### Strategy Backtesting
+- Historical simulation with realistic transaction costs
+- Performance attribution
+- Risk-adjusted return metrics
+- Stress testing and scenario analysis
 
-See `docs/CLAUDE_CODE_BEDROCK_SETUP.md` for setup instructions.
+## Usage Examples
 
-Quick setup:
-```bash
-# 1. Login to AWS SSO
-aws sso login --profile bedrock-code-ai
-
-# 2. Load configuration
-source config/claude_code_bedrock.env
-
-# 3. Verify
-config/verify_claude_code_setup.sh
-```
-
-## 📖 Examples
-
-### OpenBB - Market Data
+### Market Data Analysis
 ```bash
 python scripts/test_openbb.py
 ```
 
-### QuantLib - Options Pricing
+### Options Pricing
 ```bash
-python scripts/test_pyql.py
+python scripts/test_pyql.py      # QuantLib examples
+python scripts/test_vollib.py    # Volatility analysis
 ```
 
-### GS Quant - Strategy & Risk
+### Portfolio & Strategy Analysis
 ```bash
-python scripts/test_gs_openbb_integration.py
+python scripts/test_gs.py                      # GS Quant examples
+python scripts/test_gs_openbb_integration.py   # Integrated workflow
 ```
 
-## 🔐 AWS Configuration
+## Technical Documentation
 
-This project uses AWS Bedrock for Claude Code. Configuration:
-- **Profile**: `bedrock-code-ai`
-- **Region**: `eu-west-1`
-- **SSO**: HelloFresh SSO
+- **GS Quant Integration**: `docs/gs_quant_explanation.md`
+- **Finance Theory**: Based on "Principles of Corporate Finance" (Brealey, Myers, Allen)
+  - Options & Derivatives (Chapters 20-21)
+  - Portfolio Theory (Chapter 8)
+  - Risk Management (Chapters 7, 24)
 
-## 📝 Notes
+## License
 
-- Virtual environments are gitignored
-- AWS credentials should never be committed
-- See individual script files for usage examples
-
-## 🤝 Contributing
-
-This is a personal learning project. Feel free to fork and adapt for your own use.
-
-## 📄 License
-
-Personal project - see individual library licenses for dependencies.
-
+Personal research project - see individual library licenses for dependencies.
