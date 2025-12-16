@@ -1,0 +1,16 @@
+# Core Data & Analysis
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Market Data
+OpenBB>=4.0.0
+
+# Quantitative Finance
+QuantLib>=1.40
+
+# GS Quant (Goldman Sachs)
+gs-quant>=1.4.0
+
+# Optional: Options Pricing (Python 3 compatible)
+# py-vollib>=1.0.3  # Uncomment if needed
+
