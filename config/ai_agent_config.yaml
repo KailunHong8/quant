@@ -1,0 +1,154 @@
+# AI Quant Agent Configuration
+# ============================
+
+# LLM Provider Settings
+llm:
+  # Provider: 'bedrock' (AWS) or 'openai'
+  provider: bedrock
+  
+  # Bedrock settings (AWS Claude)
+  bedrock:
+    model: anthropic.claude-3-5-sonnet-20241022-v2:0
+    region: us-east-1
+    temperature: 0.1  # Low temperature for analytical precision
+    max_tokens: 8000
+  
+  # OpenAI settings
+  openai:
+    model: gpt-4o
+    temperature: 0.1
+    max_tokens: 8000
+
+# Agent Behavior
+agent:
+  # Enable verbose logging
+  verbose: true
+  
+  # Maximum tool-calling iterations
+  max_iterations: 10
+  
+  # Enable caching for tool results
+  enable_caching: true
+  cache_dir: quant_data/agent_cache
+
+# Data Sources
+data:
+  # ArcticDB cache settings
+  arctic:
+    enabled: true
+    path: quant_data
+    cache_days: 7  # How long to cache data
+  
+  # Market data providers
+  providers:
+    primary: openbb  # OpenBB for market data
+    backup: yfinance  # yfinance as fallback
+
+# Analysis Settings
+analysis:
+  # Default periods for analysis
+  default_period: 1y
+  backtest_period: 5y
+  
+  # Risk parameters
+  risk:
+    confidence_level: 0.95  # 95% for VaR/CVaR
+    risk_free_rate: 0.04    # 4% annual
+  
+  # Portfolio optimization
+  portfolio:
+    default_objective: sharpe  # 'sharpe', 'min_variance', 'max_return', 'risk_parity'
+    rebalancing_threshold: 0.05  # 5%
+    max_position_size: 0.10  # 10% per position
+    max_sector_concentration: 0.30  # 30% per sector
+  
+  # Transaction costs
+  costs:
+    commission_bps: 5  # 5 basis points
+    slippage_bps: 2    # 2 basis points
+
+# Screening Criteria
+screening:
+  # Buffett criteria thresholds
+  buffett:
+    min_score: 4  # Minimum score (out of 6)
+    pb_ratio_max: 1.5
+    debt_to_equity_max: 0.5
+    current_ratio_min: 1.5
+    current_ratio_max: 2.5
+    roe_min: 0.08  # 8%
+    roa_min: 0.06  # 6%
+  
+  # Quality criteria (Goldman Sachs style)
+  quality:
+    min_quality_score: 65  # Out of 100
+    roic_min: 0.15  # 15% for moat
+    fcf_yield_min: 0.03  # 3%
+    gross_margin_min: 0.30  # 30%
+
+# Reporting
+reporting:
+  # Report formats
+  formats:
+    - markdown
+    - json
+  
+  # Output directory
+  output_dir: reports
+  
+  # Report templates
+  templates:
+    investment_memo: templates/investment_memo.md
+    risk_report: templates/risk_report.md
+    portfolio_review: templates/portfolio_review.md
+
+# Workflows
+workflows:
+  # Daily analysis settings
+  daily_analysis:
+    enabled: true
+    run_time: "09:00"  # Market open
+    watchlist:
+      - AAPL
+      - GOOGL
+      - MSFT
+      - AMZN
+      - NVDA
+  
+  # Weekly portfolio review
+  weekly_review:
+    enabled: true
+    day: friday
+    run_time: "16:00"  # After market close
+
+# Alerts
+alerts:
+  # Enable real-time alerts
+  enabled: true
+  
+  # Alert channels
+  channels:
+    - console  # Print to console
+    # - email   # Email alerts (configure SMTP)
+    # - slack   # Slack webhook (configure URL)
+  
+  # Alert triggers
+  triggers:
+    # Price alerts
+    price_move_threshold: 0.05  # 5% daily move
+    
+    # Technical alerts
+    ma_crossover: true  # Golden/death cross
+    rsi_extreme: true   # RSI >70 or <30
+    
+    # Risk alerts
+    var_breach: true    # VaR exceeded
+    drawdown_threshold: 0.10  # 10% drawdown
+
+# Logging
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: logs/ai_agent.log
+  max_file_size: 10MB
+  backup_count: 5
