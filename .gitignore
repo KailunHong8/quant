@@ -76,3 +76,6 @@ temp/
 tmp/
 
 node_modules/
+
+# Keep local Gmail mailbox archives out of Git
+AI_lab/knowledge_base/documents/*.mbox
